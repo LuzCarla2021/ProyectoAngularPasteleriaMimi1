@@ -1,27 +1,53 @@
 <div class="section-container">
-    <h1 class="section-title">Ventas</h1>
-    <div class="section-content">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Fecha</th>
-            <th>Cliente</th>
-            <th>Total</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let sale of sales">
-            <td>{{ sale.id }}</td>
-            <td>{{ sale.date | date:'short' }}</td>
-            <td>{{ sale.customer }}</td>
-            <td>{{ sale.total | currency:'MXN' }}</td>
-            <td>
-              <button class="btn btn-sm btn-info">Ver Detalles</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+  <h1 class="section-title">Ventas</h1>
+
+  <div class="section-content">
+    <button class="btn btn-primary mb-3" (click)="showAddSaleForm()">Hacer Venta</button>
+    <!-- Formulario para agregar una nueva venta -->
+    <div *ngIf="isAddingSale" class="card p-4 mb-4">
+      <h3>{{ isAddingSale ? 'Agregar Nueva Venta' : 'Editar Venta' }}</h3>
+      <form #saleForm="ngForm" (ngSubmit)="saveSale()">
+        <div class="mb-3">
+          <label for="customerName" class="form-label">Cliente:</label>
+          <input id="customerName" type="text" class="form-control" [(ngModel)]="newSale.customer" name="customer" required>
+        </div>
+    
+        <div class="mb-3">
+          <label for="total" class="form-label">Total:</label>
+          <input id="total" type="number" class="form-control" [(ngModel)]="newSale.total" name="total" required>
+        </div>
+    
+        <div class="d-flex justify-content-between">
+          <button type="submit" class="btn btn-success">Guardar Venta</button>
+          <button type="button" class="btn btn-secondary" (click)="hideAddSaleForm()">Cancelar</button>
+        </div>
+      </form>
     </div>
+    
+    
+
+    <!-- Tabla de ventas existentes -->
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Fecha</th>
+          <th>Cliente</th>
+          <th>Total</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sale of sales">
+          <td>{{ sale.id }}</td>
+          <td>{{ sale.date | date:'short' }}</td>
+          <td>{{ sale.customer }}</td>
+          <td>{{ sale.total | currency:'MXN' }}</td>
+          <td>
+            <button class="btn btn-sm btn-info">Ver Detalles</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+</div>

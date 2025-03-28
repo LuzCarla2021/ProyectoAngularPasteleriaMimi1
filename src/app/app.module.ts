@@ -10,6 +10,7 @@ import { PedidosComponent } from './pages/pedidos/pedidos.component';
 import { ClientesComponent } from './pages/clientes/clientes.component';
 import { EmpleadosComponent } from './pages/empleados/empleados.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { UsuariosComponent } from './pages/usuarios/usuarios.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
