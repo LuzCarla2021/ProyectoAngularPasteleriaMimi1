@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -10,7 +11,13 @@ import { PedidosComponent } from './pages/pedidos/pedidos.component';
 import { ClientesComponent } from './pages/clientes/clientes.component';
 import { EmpleadosComponent } from './pages/empleados/empleados.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
-import { FormsModule } from '@angular/forms';
+import { LandingComponent } from './landing/landing.component';
+import { HomeComponent } from './landing/home/home.component';
+import { ConocenosComponent } from './landing/conocenos/conocenos.component';
+import { ProductosLandingComponent } from './landing/productos-landing/productos-landing.component';
+import { UbicanosComponent } from './landing/ubicanos/ubicanos.component';
+import { NavbarComponent } from './landing/navbar/navbar.component';
+import { LoginComponent } from './landing/login/login.component';
 
 @NgModule({
   declarations: [
@@ -22,12 +29,19 @@ import { FormsModule } from '@angular/forms';
     PedidosComponent,
     ClientesComponent,
     EmpleadosComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    LandingComponent,
+    HomeComponent,
+    ConocenosComponent,
+    ProductosLandingComponent,
+    UbicanosComponent,
+    NavbarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule 
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

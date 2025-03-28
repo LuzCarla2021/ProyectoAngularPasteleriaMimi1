@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SidebarService } from '../sidebar.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,7 +11,7 @@ import { SidebarService } from '../sidebar.service';
 export class SidebarComponent {
   isCollapsed = false;
 
-  constructor(private sidebarService: SidebarService) {
+  constructor(private sidebarService: SidebarService, private router:Router) {
     this.sidebarService.isCollapsed$.subscribe(isCollapsed => {
       this.isCollapsed = isCollapsed;
     });
@@ -21,12 +22,12 @@ export class SidebarComponent {
   }
 
   logout() {
-    // Simular el cierre de sesión con una alerta
     if (confirm('¿Estás seguro de que quieres cerrar sesión?')) {
-      alert('Sesión cerrada exitosamente.');
-      // Aquí puedes agregar la lógica real para cerrar sesión, como redirigir a la página de login
-      // Por ejemplo: this.router.navigate(['/login']);
+      // Redirigir al Home de la landing page
+      this.router.navigate(['/']);
     }
   }
+
+  
   
 }
