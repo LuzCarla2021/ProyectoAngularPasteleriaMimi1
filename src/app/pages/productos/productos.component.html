@@ -1,0 +1,29 @@
+<div class="section-container">
+    <h1 class="section-title">Productos</h1>
+    <div class="section-content">
+      <button class="btn btn-primary mb-3" (click)="showAddProductForm()">Agregar Producto</button>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.price | currency:'MXN' }}</td>
+            <td>{{ product.stock }}</td>
+            <td>
+              <button class="btn btn-sm btn-warning me-2">Editar</button>
+              <button class="btn btn-sm btn-danger">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

@@ -1,0 +1,53 @@
+<nav class="sidebar" [ngClass]="{'collapsed': isCollapsed}">
+  <div class="sidebar-header">
+    <button class="toggle-btn" (click)="toggleSidebar()" title="Colapsar/Expandir">
+      <i class="bi" [ngClass]="isCollapsed ? 'bi-arrow-right-circle' : 'bi-arrow-left-circle'"></i>
+    </button>
+  </div>
+  <div class="sidebar-sticky">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/inicio" routerLinkActive="active">
+          <i class="bi bi-house-door"></i>
+          <span class="link-text" [ngClass]="{'hidden': isCollapsed}">Inicio</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/productos" routerLinkActive="active">
+          <i class="bi bi-box"></i>
+          <span class="link-text" [ngClass]="{'hidden': isCollapsed}">Productos</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/ventas" routerLinkActive="active">
+          <i class="bi bi-cart"></i>
+          <span class="link-text" [ngClass]="{'hidden': isCollapsed}">Ventas</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/pedidos" routerLinkActive="active">
+          <i class="bi bi-truck"></i>
+          <span class="link-text" [ngClass]="{'hidden': isCollapsed}">Pedidos</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/clientes" routerLinkActive="active">
+          <i class="bi bi-people"></i>
+          <span class="link-text" [ngClass]="{'hidden': isCollapsed}">Clientes</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/empleados" routerLinkActive="active">
+          <i class="bi bi-person-badge"></i>
+          <span class="link-text" [ngClass]="{'hidden': isCollapsed}">Empleados</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/usuarios" routerLinkActive="active">
+          <i class="bi bi-person-circle"></i>
+          <span class="link-text" [ngClass]="{'hidden': isCollapsed}">Usuarios</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,28 @@
+<div class="section-container">
+    <h1 class="section-title">Empleados</h1>
+    <div class="section-content">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Rol</th>
+            <th>Teléfono</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employees">
+            <td>{{ employee.id }}</td>
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.role }}</td>
+            <td>{{ employee.phone }}</td>
+            <td>
+              <button class="btn btn-sm btn-warning me-2">Editar</button>
+              <button class="btn btn-sm btn-danger">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

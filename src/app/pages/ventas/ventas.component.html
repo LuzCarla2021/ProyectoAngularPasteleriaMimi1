@@ -1,0 +1,27 @@
+<div class="section-container">
+    <h1 class="section-title">Ventas</h1>
+    <div class="section-content">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Cliente</th>
+            <th>Total</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let sale of sales">
+            <td>{{ sale.id }}</td>
+            <td>{{ sale.date | date:'short' }}</td>
+            <td>{{ sale.customer }}</td>
+            <td>{{ sale.total | currency:'MXN' }}</td>
+            <td>
+              <button class="btn btn-sm btn-info">Ver Detalles</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

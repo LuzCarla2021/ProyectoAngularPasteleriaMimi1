@@ -1,0 +1,35 @@
+<div class="section-container">
+    <h1 class="section-title">Pedidos</h1>
+    <div class="section-content">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Cliente</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders">
+            <td>{{ order.id }}</td>
+            <td>{{ order.customer }}</td>
+            <td>{{ order.date | date:'short' }}</td>
+            <td>
+              <span [ngClass]="{
+                'badge bg-warning': order.status === 'Pendiente',
+                'badge bg-info': order.status === 'En Proceso',
+                'badge bg-success': order.status === 'Entregado'
+              }">
+                {{ order.status }}
+              </span>
+            </td>
+            <td>
+              <button class="btn btn-sm btn-info">Ver Detalles</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

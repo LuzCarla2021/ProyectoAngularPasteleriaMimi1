@@ -1,0 +1,28 @@
+.section-container {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .section-title {
+    color: #ff6f91;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ff99ac;
+    padding-bottom: 10px;
+  }
+  
+  .section-content {
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  .table {
+    background-color: #fff5f7;
+  }
+  
+  .table th {
+    color: #ff6f91;
+  }

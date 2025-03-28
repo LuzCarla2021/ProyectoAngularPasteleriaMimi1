@@ -1,0 +1,15 @@
+main {
+    margin-left: 250px; /* Ancho del sidebar expandido */
+    padding: 20px;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    transition: margin-left 0.3s ease; /* Animación suave */
+  }
+  
+  main.expanded {
+    margin-left: 60px; /* Ancho del sidebar colapsado */
+  }
+  
+  .container-fluid {
+    padding: 0;
+  }
