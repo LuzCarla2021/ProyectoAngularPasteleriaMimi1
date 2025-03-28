@@ -19,4 +19,14 @@ export class SidebarComponent {
   toggleSidebar() {
     this.sidebarService.toggleSidebar();
   }
+
+  logout() {
+    // Simular el cierre de sesión con una alerta
+    if (confirm('¿Estás seguro de que quieres cerrar sesión?')) {
+      alert('Sesión cerrada exitosamente.');
+      // Aquí puedes agregar la lógica real para cerrar sesión, como redirigir a la página de login
+      // Por ejemplo: this.router.navigate(['/login']);
+    }
+  }
+  
 }

@@ -48,6 +48,13 @@
           <span class="link-text" [ngClass]="{'hidden': isCollapsed}">Usuarios</span>
         </a>
       </li>
+      <!-- Botón de Cerrar Sesión -->
+      <li class="nav-item mt-auto">
+        <a class="nav-link logout-link" (click)="logout()" style="cursor: pointer;">
+          <i class="bi bi-box-arrow-right"></i>
+          <span class="link-text" [ngClass]="{'hidden': isCollapsed}">Cerrar Sesión</span>
+        </a>
+      </li>
     </ul>
   </div>
 </nav>
