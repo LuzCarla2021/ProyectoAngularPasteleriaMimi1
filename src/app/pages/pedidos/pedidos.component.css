@@ -18,6 +18,16 @@
     font-size: 1rem;
     color: #333;
   }
+
+  .btn-primary {
+    background-color: #ff6f91;
+    border-color: #ff6f91;
+  }
+  
+  .btn-primary:hover {
+    background-color: #ff4d7d;
+    border-color: #ff4d7d;
+  }
   
   .table {
     background-color: #fff5f7;

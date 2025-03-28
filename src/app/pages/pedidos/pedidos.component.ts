@@ -1,5 +1,16 @@
 import { Component } from '@angular/core';
 
+// Define la interfaz Pedido
+interface Pedido {
+  id: number;
+  size: string;
+  shape: string;
+  flavor: string;
+  filling: string;
+  dedication: string;
+  hasPhoto: boolean;
+}
+
 @Component({
   selector: 'app-pedidos',
   standalone: false,
@@ -7,9 +18,58 @@ import { Component } from '@angular/core';
   styleUrl: './pedidos.component.css'
 })
 export class PedidosComponent {
-  orders = [
-    { id: 1, customer: 'Ana López', date: new Date(), status: 'Pendiente' },
-    { id: 2, customer: 'Juan Pérez', date: new Date(), status: 'En Proceso' },
-    { id: 3, customer: 'María Gómez', date: new Date(), status: 'Entregado' }
-  ];
+  isAddingOrder = false;
+  isEditingOrder = false;
+  orders: Pedido[] = [];  // Definimos el tipo de datos de orders como un array de objetos Pedido
+  newOrder: Pedido = {
+    id: 0,
+    size: '',
+    shape: '',
+    flavor: '',
+    filling: '',
+    dedication: '',
+    hasPhoto: false
+  };
+
+  // Muestra el formulario para hacer un nuevo pedido
+  showAddOrderForm() {
+    this.isAddingOrder = true;
+    this.resetOrderForm();
+  }
+
+  // Oculta el formulario
+  hideAddOrderForm() {
+    this.isAddingOrder = false;
+  }
+
+  // Guarda el pedido
+  saveOrder() {
+    if (this.isEditingOrder) {
+      const index = this.orders.findIndex(order => order.id === this.newOrder.id);
+      this.orders[index] = { ...this.newOrder }; // Actualiza el pedido
+    } else {
+      this.newOrder.id = this.orders.length + 1; // Genera un ID para el nuevo pedido
+      this.orders.push({ ...this.newOrder }); // Agrega el nuevo pedido
+    }
+    this.hideAddOrderForm(); // Oculta el formulario después de guardar
+  }
+
+  // Reinicia el formulario para un nuevo pedido
+  resetOrderForm() {
+    this.newOrder = {
+      id: 0,
+      size: '',
+      shape: '',
+      flavor: '',
+      filling: '',
+      dedication: '',
+      hasPhoto: false
+    };
+    this.isEditingOrder = false;
+  }
+
+  // Ver detalles de un pedido (ejemplo)
+  viewOrderDetails(orderId: number) {
+    alert('Ver detalles del pedido ID ' + orderId);
+  }
 }

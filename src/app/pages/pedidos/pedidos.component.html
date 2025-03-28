@@ -1,35 +1,106 @@
 <div class="section-container">
-    <h1 class="section-title">Pedidos</h1>
-    <div class="section-content">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Cliente</th>
-            <th>Fecha</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let order of orders">
-            <td>{{ order.id }}</td>
-            <td>{{ order.customer }}</td>
-            <td>{{ order.date | date:'short' }}</td>
-            <td>
-              <span [ngClass]="{
-                'badge bg-warning': order.status === 'Pendiente',
-                'badge bg-info': order.status === 'En Proceso',
-                'badge bg-success': order.status === 'Entregado'
-              }">
-                {{ order.status }}
-              </span>
-            </td>
-            <td>
-              <button class="btn btn-sm btn-info">Ver Detalles</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+  <h1 class="section-title">Pedidos</h1>
+
+  <div class="section-content">
+    <!-- Botón para hacer un nuevo pedido -->
+    <button class="btn btn-primary mb-3" (click)="showAddOrderForm()">Hacer Pedido</button>
+
+    <!-- Formulario para agregar un nuevo pedido -->
+    <div *ngIf="isAddingOrder" class="card p-4 mb-4">
+      <h3>{{ isEditingOrder ? 'Editar Pedido' : 'Agregar Nuevo Pedido' }}</h3>
+      <form #orderForm="ngForm" (ngSubmit)="saveOrder()">
+        <!-- Tamaño del pastel -->
+        <div class="mb-3">
+          <label for="size" class="form-label">Tamaño del pastel:</label>
+          <!-- Tamaño del pastel -->
+<select id="size" class="form-select" [(ngModel)]="newOrder.size" name="size" required>
+  <option value="chico">Chico</option>
+  <option value="mediano">Mediano</option>
+  <option value="grande">Grande</option>
+</select>
+
+        </div>
+
+        <!-- Forma del pastel -->
+        <div class="mb-3">
+          <label for="shape" class="form-label">Forma del pastel:</label>
+          <select id="shape" class="form-select" [(ngModel)]="newOrder.shape" name="shape" required>
+            <option value="redondo">Redondo</option>
+            <option value="corazon">Corazón</option>
+            <option value="rectangular">Rectangular</option>
+          </select>
+        </div>
+
+        <!-- Sabor del pastel -->
+        <div class="mb-3">
+          <label for="flavor" class="form-label">Sabor:</label>
+          <select id="flavor" class="form-select" [(ngModel)]="newOrder.flavor" name="flavor" required>
+            <option value="vainilla">Vainilla</option>
+            <option value="chocolate">Chocolate</option>
+          </select>
+        </div>
+
+        <!-- Relleno del pastel -->
+        <div class="mb-3">
+          <label for="filling" class="form-label">Relleno:</label>
+          <select id="filling" class="form-select" [(ngModel)]="newOrder.filling" name="filling" required>
+            <option value="fresa">Fresa</option>
+            <option value="chocolate">Chocolate</option>
+            <option value="flan">Flan</option>
+          </select>
+        </div>
+
+        <!-- Dedicatoria -->
+        <div class="mb-3">
+          <label for="dedication" class="form-label">Dedicatoria:</label>
+          <textarea id="dedication" class="form-control" [(ngModel)]="newOrder.dedication" name="dedication" required maxlength="150" minlength="10"></textarea>
+        </div>
+
+        <!-- Opción de foto -->
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="newOrder.hasPhoto" name="hasPhoto" id="hasPhoto">
+          <label class="form-check-label" for="hasPhoto">
+            ¿Hay foto para mostrar?
+          </label>
+        </div>
+
+        <!-- Botones -->
+        <div class="d-flex justify-content-between">
+          <button type="submit" class="btn btn-success">{{ isEditingOrder ? 'Actualizar Pedido' : 'Guardar Pedido' }}</button>
+          <button type="button" class="btn btn-secondary" (click)="hideAddOrderForm()">Cancelar</button>
+        </div>
+      </form>
     </div>
+
+    <!-- Tabla de pedidos existentes -->
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Tamaño</th>
+          <th>Forma</th>
+          <th>Sabor</th>
+          <th>Relleno</th>
+          <th>Dedicatoria</th>
+          <th>Foto</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <td>{{ order.id }}</td>
+          <td>{{ order.size }}</td>
+          <td>{{ order.shape }}</td>
+          <td>{{ order.flavor }}</td>
+          <td>{{ order.filling }}</td>
+          <td>{{ order.dedication }}</td>
+          <td>{{ order.hasPhoto ? 'Sí' : 'No' }}</td>
+          <td>
+            <button class="btn btn-sm btn-info" (click)="viewOrderDetails(order.id)">Ver Detalles</button>
+          </td>
+        </tr>
+      </tbody>
+      
+    </table>
   </div>
+</div>
