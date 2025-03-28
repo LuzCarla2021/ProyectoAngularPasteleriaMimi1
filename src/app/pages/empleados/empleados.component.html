@@ -1,28 +1,77 @@
 <div class="section-container">
-    <h1 class="section-title">Empleados</h1>
-    <div class="section-content">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Rol</th>
-            <th>Teléfono</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let employee of employees">
-            <td>{{ employee.id }}</td>
-            <td>{{ employee.name }}</td>
-            <td>{{ employee.role }}</td>
-            <td>{{ employee.phone }}</td>
-            <td>
-              <button class="btn btn-sm btn-warning me-2">Editar</button>
-              <button class="btn btn-sm btn-danger">Eliminar</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+  <h1 class="section-title">Empleados</h1>
+
+  <div class="section-content">
+    <!-- Botón para mostrar el formulario de agregar empleado -->
+    <button class="btn btn-primary mb-3" (click)="showAddEmployeeForm()">Agregar Empleado</button>
+
+    <!-- Formulario para agregar un nuevo empleado -->
+    <div *ngIf="isAddingEmployee" class="card p-4 mb-4">
+      <h3>{{ isAddingEmployee ? 'Agregar Nuevo Empleado' : 'Editar Empleado' }}</h3>
+      <form #employeeForm="ngForm" (ngSubmit)="saveEmployee()">
+        <div class="mb-3">
+          <label for="firstName" class="form-label">Nombre:</label>
+          <input id="firstName" type="text" class="form-control" [(ngModel)]="newEmployee.firstName" name="firstName" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="lastName" class="form-label">Primer Apellido:</label>
+          <input id="lastName" type="text" class="form-control" [(ngModel)]="newEmployee.lastName" name="lastName" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="secondLastName" class="form-label">Segundo Apellido:</label>
+          <input id="secondLastName" type="text" class="form-control" [(ngModel)]="newEmployee.secondLastName" name="secondLastName" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="phone" class="form-label">Número:</label>
+          <input id="phone" type="tel" class="form-control" [(ngModel)]="newEmployee.phone" name="phone" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="birthDate" class="form-label">Fecha de Nacimiento:</label>
+          <input id="birthDate" type="date" class="form-control" [(ngModel)]="newEmployee.birthDate" name="birthDate" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="hireDate" class="form-label">Fecha de Ingreso:</label>
+          <input id="hireDate" type="date" class="form-control" [(ngModel)]="newEmployee.hireDate" name="hireDate" required>
+        </div>
+
+        <div class="d-flex justify-content-between">
+          <button type="submit" class="btn btn-success">Guardar Empleado</button>
+          <button type="button" class="btn btn-secondary" (click)="hideAddEmployeeForm()">Cancelar</button>
+        </div>
+      </form>
     </div>
+
+    <!-- Tabla de empleados -->
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Primer Apellido</th>
+          <th>Segundo Apellido</th>
+          <th>Número</th>
+          <th>Fecha de Nacimiento</th>
+          <th>Fecha de Ingreso</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees">
+          <td>{{ employee.firstName }}</td>
+          <td>{{ employee.lastName }}</td>
+          <td>{{ employee.secondLastName }}</td>
+          <td>{{ employee.phone }}</td>
+          <td>{{ employee.birthDate | date: 'shortDate' }}</td>
+          <td>{{ employee.hireDate | date: 'shortDate' }}</td>
+          <td>
+            <button class="btn btn-sm btn-info" (click)="viewEmployeeDetails(employee.id)">Ver Detalles</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+</div>
