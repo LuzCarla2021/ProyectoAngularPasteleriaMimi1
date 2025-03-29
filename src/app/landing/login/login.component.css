@@ -44,3 +44,10 @@
   .text-center a:hover {
     text-decoration: underline;
   }
+  
+  /* Estilo para los mensajes de error */
+  .text-danger {
+    color: #ff6f91 !important; /* Color coral para los mensajes de error */
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+  }

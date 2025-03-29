@@ -107,3 +107,48 @@
 .sidebar::-webkit-scrollbar-track {
   background: #ff99ac;
 }
+
+/* Estilos para el modal */
+.modal-content {
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  background: linear-gradient(180deg, #ff6f91 0%, #ff99ac 100%);
+  color: #fff;
+  border-bottom: none;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+}
+
+.btn-close {
+  filter: invert(1); /* Hace que el botón de cerrar sea blanco */
+}
+
+.modal-body {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.btn-primary {
+  background-color: #ff6f91;
+  border-color: #ff6f91;
+}
+
+.btn-primary:hover {
+  background-color: #ff4d7d;
+  border-color: #ff4d7d;
+}
+
+.btn-secondary {
+  background-color: #d1d1d1;
+  border-color: #d1d1d1;
+}
+
+.btn-secondary:hover {
+  background-color: #b0b0b0;
+  border-color: #b0b0b0;
+}

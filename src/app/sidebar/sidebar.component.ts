@@ -23,7 +23,22 @@ export class SidebarComponent implements OnInit {
     this.sidebarService.toggleSidebar();
   }
 
-  logout() {
+  showLogoutModal() {
+    // Mostrar el modal usando Bootstrap
+    const modal = document.getElementById('logoutModal');
+    if (modal) {
+      const bootstrapModal = new (window as any).bootstrap.Modal(modal);
+      bootstrapModal.show();
+    }
+  }
+
+  confirmLogout() {
+    // Cerrar el modal y redirigir
+    const modal = document.getElementById('logoutModal');
+    if (modal) {
+      const bootstrapModal = (window as any).bootstrap.Modal.getInstance(modal);
+      bootstrapModal.hide();
+    }
     this.router.navigate(['/login']);
   }
 }

@@ -7,11 +7,15 @@
   }
   
   main {
-    padding: 20px;
+    padding: 30px 40px;
     background-color: #f8f9fa;
     min-height: 100vh;
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
   }
   
-  .expanded {
+  main.expanded {
     margin-left: 60px;
+    width: calc(100% - 60px);
   }

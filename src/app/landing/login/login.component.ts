@@ -13,12 +13,19 @@ export class LoginComponent {
     password: ''
   };
 
+  isFormValid = false;
+
   constructor(private router: Router) {}
 
+  validateForm() {
+    // Asegurarse de que las expresiones devuelvan un boolean
+    const usernameValid = !!this.loginData.username && this.loginData.username.length >= 6;
+    const passwordValid = !!this.loginData.password && this.loginData.password.length >= 6;
+    this.isFormValid = usernameValid && passwordValid;
+  }
+
   login() {
-    // Simular autenticación (por ahora, cualquier usuario/contraseña funciona)
-    if (this.loginData.username && this.loginData.password) {
-      // Redirigir al panel administrativo
+    if (this.isFormValid) {
       this.router.navigate(['/admin/inicio']);
     } else {
       alert('Por favor, ingresa un usuario y contraseña válidos.');
