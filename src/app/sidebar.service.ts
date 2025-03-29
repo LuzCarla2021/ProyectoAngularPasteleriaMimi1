@@ -1,3 +1,4 @@
+// sidebar.service.ts
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -12,7 +13,7 @@ export class SidebarService {
     this.isCollapsedSubject.next(!this.isCollapsedSubject.value);
   }
 
-  setCollapsedState(isCollapsed: boolean) {
-    this.isCollapsedSubject.next(isCollapsed);
+  setCollapsed(state: boolean) {
+    this.isCollapsedSubject.next(state);
   }
 }

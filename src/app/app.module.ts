@@ -1,6 +1,8 @@
+// app.module.ts
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common'; // Añade CommonModule
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -18,6 +20,8 @@ import { ProductosLandingComponent } from './landing/productos-landing/productos
 import { UbicanosComponent } from './landing/ubicanos/ubicanos.component';
 import { NavbarComponent } from './landing/navbar/navbar.component';
 import { LoginComponent } from './landing/login/login.component';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { PublicLayoutComponent } from './layouts/public-layout/public-layout.component';
 
 @NgModule({
   declarations: [
@@ -36,12 +40,15 @@ import { LoginComponent } from './landing/login/login.component';
     ProductosLandingComponent,
     UbicanosComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    AdminLayoutComponent,
+    PublicLayoutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    CommonModule // Añade CommonModule para directivas como ngClass
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,28 @@
+/* about.component.css */
+.about-section {
+    background-color: #fff5f5; /* Fondo rosa claro, igual que la sección de bienvenida */
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+  }
+  
+  .section-text {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .feature-title {
+    font-size: 1.5rem;
+    color: #ff6f61; /* Color coral para mantener consistencia con el botón */
+    margin-bottom: 1rem;
+  }
+  
+  .feature-text {
+    font-size: 1rem;
+    color: #666;
+  }

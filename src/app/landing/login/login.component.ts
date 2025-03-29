@@ -19,7 +19,7 @@ export class LoginComponent {
     // Simular autenticación (por ahora, cualquier usuario/contraseña funciona)
     if (this.loginData.username && this.loginData.password) {
       // Redirigir al panel administrativo
-      this.router.navigate(['/admin']);
+      this.router.navigate(['/admin/inicio']);
     } else {
       alert('Por favor, ingresa un usuario y contraseña válidos.');
     }

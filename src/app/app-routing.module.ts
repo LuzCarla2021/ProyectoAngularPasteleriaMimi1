@@ -1,11 +1,13 @@
+// app-routing.module.ts
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { PublicLayoutComponent } from './layouts/public-layout/public-layout.component';
 import { LandingComponent } from './landing/landing.component';
 import { HomeComponent } from './landing/home/home.component';
 import { ConocenosComponent } from './landing/conocenos/conocenos.component';
 import { ProductosLandingComponent } from './landing/productos-landing/productos-landing.component';
 import { UbicanosComponent } from './landing/ubicanos/ubicanos.component';
-import { AppComponent } from './app.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { ProductosComponent } from './pages/productos/productos.component';
 import { VentasComponent } from './pages/ventas/ventas.component';
@@ -14,22 +16,32 @@ import { ClientesComponent } from './pages/clientes/clientes.component';
 import { EmpleadosComponent } from './pages/empleados/empleados.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { LoginComponent } from './landing/login/login.component';
+
 const routes: Routes = [
-  // Rutas de 'landing'
+  // Rutas públicas (con navbar, sin sidebar)
   {
     path: '',
-    component: LandingComponent,
+    component: PublicLayoutComponent,
     children: [
-      { path: '', component: HomeComponent }, // "/"
-      { path: 'conocenos', component: ConocenosComponent }, // "/conocenos"
-      { path: 'productos', component: ProductosLandingComponent }, // "/productos"
-      { path: 'ubicanos', component: UbicanosComponent } // "/ubicanos"
+      // Rutas de 'landing'
+      {
+        path: '',
+        component: LandingComponent,
+        children: [
+          { path: '', component: HomeComponent }, // "/"
+          { path: 'conocenos', component: ConocenosComponent }, // "/conocenos"
+          { path: 'productos', component: ProductosLandingComponent }, // "/productos"
+          { path: 'ubicanos', component: UbicanosComponent } // "/ubicanos"
+        ]
+      },
+      // Ruta de login (dentro del navbar, sin sidebar)
+      { path: 'login', component: LoginComponent } // "/login"
     ]
   },
-  // Rutas de 'pages'
+  // Rutas administrativas (con sidebar)
   {
     path: 'admin',
-    component: AppComponent,
+    component: AdminLayoutComponent,
     children: [
       { path: '', redirectTo: 'inicio', pathMatch: 'full' }, // "/admin" -> "/admin/inicio"
       { path: 'inicio', component: InicioComponent }, // "/admin/inicio"
@@ -40,9 +52,9 @@ const routes: Routes = [
       { path: 'empleados', component: EmpleadosComponent }, // "/admin/empleados"
       { path: 'usuarios', component: UsuariosComponent } // "/admin/usuarios"
     ]
-  },
-  { path: 'login', component: LoginComponent } // "/login"
+  }
 ];
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

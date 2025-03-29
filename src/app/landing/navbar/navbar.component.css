@@ -1,6 +1,9 @@
+/* navbar.component.css */
 .navbar {
     background: linear-gradient(90deg, #ff6f91 0%, #ff99ac 100%);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem 1rem; /* Aumentamos el padding para hacerlo más grueso */
+    border-bottom: 2px solid #fff; /* Borde blanco delgado en la parte inferior */
   }
   
   .navbar-brand {

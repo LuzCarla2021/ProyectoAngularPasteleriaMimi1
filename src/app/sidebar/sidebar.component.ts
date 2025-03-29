@@ -11,7 +11,9 @@ import { Router } from '@angular/router';
 export class SidebarComponent {
   isCollapsed = false;
 
-  constructor(private sidebarService: SidebarService, private router:Router) {
+  constructor(private router: Router, private sidebarService: SidebarService) {}
+
+  ngOnInit() {
     this.sidebarService.isCollapsed$.subscribe(isCollapsed => {
       this.isCollapsed = isCollapsed;
     });
@@ -21,13 +23,17 @@ export class SidebarComponent {
     this.sidebarService.toggleSidebar();
   }
 
-  logout() {
-    if (confirm('¿Estás seguro de que quieres cerrar sesión?')) {
-      // Redirigir al Home de la landing page
-      this.router.navigate(['/']);
-    }
+  inicio() {
+    this.router.navigate(['/admin/inicio']);
   }
 
+  productos() {
+    this.router.navigate(['/admin/productos']);
+  }
+
+  logout() {
+    this.router.navigate(['/login']);
+  }
   
   
 }
