@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SidebarService } from '../sidebar.service';
 import { Router } from '@angular/router';
 
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
   isCollapsed = false;
 
   constructor(private router: Router, private sidebarService: SidebarService) {}
@@ -23,17 +23,7 @@ export class SidebarComponent {
     this.sidebarService.toggleSidebar();
   }
 
-  inicio() {
-    this.router.navigate(['/admin/inicio']);
-  }
-
-  productos() {
-    this.router.navigate(['/admin/productos']);
-  }
-
   logout() {
     this.router.navigate(['/login']);
   }
-  
-  
 }
